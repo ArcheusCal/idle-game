@@ -1,10 +1,6 @@
 let internalcount = 0;
 let costexponent = 1.1;
 
-let thingfarmerscount = 0;
-
-let thingfarmerscost = 25;
-
 let producers = {
     farmers: {
         count: 0,
