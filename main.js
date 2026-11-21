@@ -28,7 +28,8 @@ for (let type in producers) { // cycles through every part in producers, type wi
     producers[type].prodpersecond = 0;
     producers[type].cost = producers[type].baseCost; // sets initial cost to base cost
     document.getElementById(String(type)+"cost").innerHTML = producers[type].baseCost; // updates all cost displays to show baseCost
-    
+    document.getElementById(String(type)+"display").innerHTML = producers[type].count; // updates all cost displays to show baseCost
+    document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].count*producers[type].power*tickspersecond;
 };
 
 
