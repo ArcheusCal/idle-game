@@ -44,7 +44,6 @@ function buyProduction(type){
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
         clickThing(producers[type].count*producers[type].power); // adds producer amount * producer power to money
-        producers[type].totalprod = producers[]
     };
 }, 1000/tickspersecond);
 
