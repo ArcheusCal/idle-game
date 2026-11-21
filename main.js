@@ -42,7 +42,7 @@ window.setInterval(function(){ // fires the following code every 1000/ticksperse
         console.log(
             type,
             producers[type].count,
-            producers[type].production
+            producers[type].power
         );
     };
 }, 1000/tickspersecond);
