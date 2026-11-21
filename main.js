@@ -29,8 +29,8 @@ function clickThing(number){
 function buyProduction(type){
     let producer = producers[type]; // sets the variable producer to the producer type selected
     if (!producer){
-        return; // if the producer does not exist, stop
         console.log("called producer "+String(type)+"does not exist");
+        return; // if the producer does not exist, stop
     };
     producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
     if (internalcount >= producer.cost){ // checks if you have enough
@@ -38,10 +38,10 @@ function buyProduction(type){
         producer.count += 1; // gives you the producer
     };
     document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
-    document.getElementById("farmercost").innerHTML = Math.floor(25 * Math.pow(costexponent,producer.count)); // updates cost
+    document.getElementById("farmercost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
-    document.getElementById(String(type)+"prodpersecond").innerHTML = proucer.prodpersecond; //updates production per second
+    document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
     console.log("successfully bought "+String(type)+" production"); // reports that the function executed
 };
 
