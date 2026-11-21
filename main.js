@@ -1,6 +1,13 @@
-var things = 0;
+var internalcount = 0;
+var displaycount = 0;
 
 function clickThing(number){
-    things = things + number;
-    document.getElementById("thingdisplay").innerHTML = things;
+    internalcount = internalcount + number;
+    if (internalcount = 0) {
+        displaycount = "0"
+    }
+    else {
+        displaycount = internalcount
+    }
+    document.getElementById("thingdisplay").innerHTML = displaycount;
 };
