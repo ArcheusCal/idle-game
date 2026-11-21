@@ -20,16 +20,16 @@ function clickThing(number){
 };
 
 function buyProduction(type){
-    producer = producers[type] // sets the variable producer to the producer type selected
+    let producer = producers[type]; // sets the variable producer to the producer type selected
     if (!producer){
         return; // if the producer does not exist, stop
-    }
+    };
     producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
     if (internalcount >= producer.cost){ // checks if you have enough
         internalcount -= producer.cost; // subtracts cost from money
         producer.count += 1; // gives you the producer
     };
-    document.getElementById("farmerdisplay").innerHTML = producers.farmers.count; // updates amount
-    document.getElementById("farmercost").innerHTML = Math.floor(25 * Math.pow(costexponent,producers.farmers.count)); // updates cost
+    document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
+    document.getElementById("farmercost").innerHTML = Math.floor(25 * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates amount
 };
