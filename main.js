@@ -47,8 +47,10 @@ function clickThing(number,type){
     producers[type].generatedcount += number; // adds number to count
     document.getElementById(String(type)+"display").innerHTML = String(producers[type].count+producers[type].generatedcount); // sets thingdisplay value to count
     console.log("%cadded "+String(number)+" of "+String(type),"color:#ADADAD;"); // reports action in console
-    updateProduction(type)
-    updateAmountOfProduction(type)
+        if (type !== "things") {
+        updateProduction(type);
+        updateAmountOfProduction(type);
+    };
 };
 
 function buyProduction(type){
@@ -86,8 +88,6 @@ window.setInterval(function(){ // fires the following code every 1000/ticksperse
     for (let type in producers) { // cycles through all producers
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
-        updateProduction(type)
-        updateAmountOfProduction(type);
     };
 }, 1000/tickspersecond);
 
