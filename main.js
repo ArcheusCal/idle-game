@@ -12,9 +12,9 @@ let producers = {
 };
 
 for (let type in producers) { // cycles through every part in producers, type will be that producer's name, like for i in statement
-    let producers[type].count = 0; // auto-generates count, cost and production per second attribute for every producer
-    let producers[type].cost = 0;
-    let producers[type].prodpersecond = 0;
+    producers[type].count = 0; // creates count, cost, prodpersecond attributes on selected producer & sets them to zero
+    producers[type].cost = 0;
+    producers[type].prodpersecond = 0;
     producers[type].cost = producers[type].baseCost; // sets initial cost to base cost
     document.getElementById(String(type)+"cost").innerHTML = producers[type].baseCost; // updates all cost displays to show baseCost
     
