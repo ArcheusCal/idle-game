@@ -68,7 +68,7 @@ function buyProduction(type){
     document.getElementById(String(type)+"display").innerHTML = producer.count+producer.generatedcount; // updates amount
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
-    producer.prodpersecond = producer.count*producer.power*tickspersecond;
+    producer.prodpersecond = (producer.count+producer.generatedcount)*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
 };
 
@@ -77,7 +77,7 @@ window.setInterval(function(){ // fires the following code every 1000/ticksperse
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
         document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
-        producers[type].prodpersecond = producers[type].count*producers[type].power*tickspersecond;
+        producers[type].prodpersecond = (producers[type].count+producers[type].generatedcount)*producers[type].power*tickspersecond;
         document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].prodpersecond; // updates gain per second of every producer
     };
 }, 1000/tickspersecond);
