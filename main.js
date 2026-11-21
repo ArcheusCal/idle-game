@@ -35,7 +35,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
 function clickThing(number,type){
     producers[type].count += number; // adds number to count
     document.getElementById(String(type)+"display").innerHTML = String(producers[type].count); // sets thingdisplay value to count
-    console.log("added "+String(number)+" of "+String(type));
+    console.log("added "+String(number)+" of "+String(type), "color:grey;");
 };
 
 function buyProduction(type){
@@ -50,16 +50,13 @@ function buyProduction(type){
         producer.count += 1; // gives you the producer
     };
     document.getElementById(String(type)+"display").innerHTML = producer.count; // updates amount
-    console.log(String(type)+"display");
-    console.log(document.getElementById(String(type)+"display"));
-    console.log(producer.count);
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.count; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
-    console.log("successfully bought "+String(type)+" production"); // reports that the function executed
+    console.log(
+        "successfully bought %c"+String(type)+" %cproduction", "color:lime green; font-weight: bold;", "color:white; font-weight: normal;"); // reports that the function executed
 };
-
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
