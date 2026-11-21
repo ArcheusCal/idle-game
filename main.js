@@ -20,7 +20,7 @@ function clickThing(number){
 };
 
 function buyProduction(type){
-    let producer = producers[type] // sets the variable producer to the producer type selected
+    producer = producers[type] // sets the variable producer to the producer type selected
     if (!producer){
         return; // if the producer does not exist, stop
     }
