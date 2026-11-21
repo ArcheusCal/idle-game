@@ -1,8 +1,7 @@
-let internalcount = 0;
-
 // initializing stats
 let costexponent = 1.1;
 let tickspersecond = 1;
+
 let producers = {
     things: {
         count: 0,
@@ -35,7 +34,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
 
 function clickThing(number,type){
     producers[type].count += number; // adds number to count
-    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count); // sets thingdisplay value to internalcount
+    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count); // sets thingdisplay value to count
 };
 
 function buyProduction(type){
@@ -45,13 +44,13 @@ function buyProduction(type){
         return; // if the producer does not exist, stop
     };
     producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
-    if (internalcount >= producer.cost){ // checks if you have enough
-        internalcount -= producer.cost; // subtracts cost from money
+    if (producers.things.count >= producer.cost){ // checks if you have enough
+        producers.things.count -= producer.cost; // subtracts cost from money
         producer.count += 1; // gives you the producer
     };
     document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
     document.getElementById("farmercost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
-    document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
+    document.getElementById("thingsdisplay").innerHTML = producers.things.count; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
     console.log("successfully bought "+String(type)+" production"); // reports that the function executed
