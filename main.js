@@ -5,10 +5,13 @@ let costexponent = 1.1;
 let tickspersecond = 1;
 let producers = {
     farmer: {
-        count: 0,
+        // int solid
         baseCost: 25,
+        power: 1,
+        count: 0,
+        // generated
         cost: 0,
-        power: 1
+        totalprod: 0
     },
 };
 
@@ -34,12 +37,14 @@ function buyProduction(type){
     document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
     document.getElementById("farmercost").innerHTML = Math.floor(25 * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
+    document.getElementById(Str(producer)+"prodpersecond").innerHTML = producer.count*producer.power*tickspersecond; //updates production per second
 };
 
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
         clickThing(producers[type].count*producers[type].power); // adds producer amount * producer power to money
+        producers[type].totalprod = producers[]
     };
 }, 1000/tickspersecond);
 
