@@ -13,14 +13,14 @@ function clickThing(number){
 };
 
 function buyProduction(type){
-    if (type = 1){
+    if (type === 1){
         thingfarmerscost = Math.floor(25 * Math.pow(costexponent,thingfarmerscount));  // the cost is the costexponent to the power of amount of farmers
         if (internalcount >= thingfarmerscost){ // checks if you have enough
             thingfarmerscount += 1; // adds the amount of thingfarmers
-            internalcount -= thingfarmerscount; // subtracts cost
+            internalcount -= thingfarmerscost; // subtracts cost
             document.getElementById("thingfarmersdisplay").innerHTML = thingfarmerscount; // updates amount
             document.getElementById("thingfarmerscost").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount)); // updates cost
-            document.getElementById("thingsdisplay").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount)); // updates cost
+            document.getElementById("thingsdisplay").innerHTML = internalcount; // updates amount
         }
     };
     document.getElementById("thingfarmersdisplay").innerHTML = String(thingfarmerscount);
