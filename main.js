@@ -35,7 +35,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
 
 function clickThing(number,type){
     producers[type].generatedcount += number; // adds number to count
-    document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // sets thingdisplay value to count
+    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count+producers[type].generatedcount); // sets thingdisplay value to count
     console.log("%cadded "+String(number)+" of "+String(type),"color:#ADADAD;"); // reports action in console
 };
 
