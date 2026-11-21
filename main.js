@@ -49,6 +49,9 @@ function buyProduction(type){
         producer.count += 1; // gives you the producer
     };
     document.getElementById(String(type)+"display").innerHTML = producer.count; // updates amount
+    console.log(String(type)+"display");
+    console.log(document.getElementById(String(type)+"display"));
+    console.log(producer.count);
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.count; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
