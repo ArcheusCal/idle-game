@@ -43,7 +43,11 @@ function clickThing(number,type){
 function updateProduction(type){
     producers[type].prodpersecond = (producers[type].count+producers[type].generatedcount)*producers[type].power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].prodpersecond; //updates production per second
-}
+};
+
+function updateAmountOfProduction(type){
+    document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
+};
 
 function buyProduction(type){
     let producer = producers[type]; // sets the variable producer to the producer type selected
@@ -70,18 +74,18 @@ function buyProduction(type){
             "color:#C72A2A; font-weight: bold;",
             "color:#E8E8E8; font-weight: normal;");// reports that production could not be bought
         };
-    document.getElementById(String(type)+"display").innerHTML = producer.count+producer.generatedcount; // updates amount
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
-    updateProduction(type)
+    updateAmountOfProduction(type);
+    updateProduction(type);
 };
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
-        document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
-        updateProduction(type)
+        updateAmountOfProduction(type);
+        updateProduction(type);
     };
 }, 1000/tickspersecond);
 
