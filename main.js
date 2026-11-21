@@ -30,7 +30,7 @@ function buyProduction(type){
     let producer = producers[type]; // sets the variable producer to the producer type selected
     if (!producer){
         return; // if the producer does not exist, stop
-        console.log("called producer "+String(type)+"does not exist")
+        console.log("called producer "+String(type)+"does not exist");
     };
     producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
     if (internalcount >= producer.cost){ // checks if you have enough
@@ -42,6 +42,7 @@ function buyProduction(type){
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = proucer.prodpersecond; //updates production per second
+    console.log("successfully bought "+String(type)+" production");
 };
 
 
