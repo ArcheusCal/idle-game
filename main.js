@@ -56,7 +56,6 @@ function buyProduction(type){
             "color:#4BDB4B; font-weight: bold;", 
             "color:#E8E8E8; font-weight: normal;"); // reports that production was successfully bought
         };
-    };
     else {
         console.log(
             "could not buy %c"+String(type)+" %cproduction, error not enough money",
@@ -64,12 +63,12 @@ function buyProduction(type){
             "color:#C72A2A; font-weight: bold;", 
             "color:#E8E8E8; font-weight: normal;"); // reports that production could not be bought
         };
-    }
     document.getElementById(String(type)+"display").innerHTML = producer.count+producer.generatedcount; // updates amount
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
+    };
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
