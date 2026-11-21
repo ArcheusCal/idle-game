@@ -1,6 +1,7 @@
 let internalcount = 0;
-let costexponent = 1.1;
 
+// initializing stats
+let costexponent = 1.1;
 let producers = {
     farmer: {
         count: 0,
