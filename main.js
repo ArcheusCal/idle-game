@@ -14,7 +14,7 @@ function clickThing(number){
 
 function buyProduction(type){
     if (type = 1){
-        thingfarmerscost = Math.floor(25 * Math.pow(costexponent,thingfarmerscount);  // the cost is the costexponent to the power of amount of farmers
+        thingfarmerscost = Math.floor(25 * Math.pow(costexponent,thingfarmerscount));  // the cost is the costexponent to the power of amount of farmers
         if (internalcount >= thingfarmerscost){ // checks if you have enough
             thingfarmerscount += 1; // adds the amount of thingfarmers
             internalcount -= thingfarmerscount; // subtracts cost
