@@ -18,7 +18,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
     producers[type].cost = producers[type].baseCost; // sets initial cost to base cost
     document.getElementById(String(type)+"cost").innerHTML = producers[type].baseCost; // updates all cost displays to show baseCost
     
-}
+};
 
 
 function clickThing(number){
@@ -42,7 +42,7 @@ function buyProduction(type){
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = proucer.prodpersecond; //updates production per second
-    console.log("successfully bought "+String(type)+" production");
+    console.log("successfully bought "+String(type)+" production"); // reports that the function executed
 };
 
 
