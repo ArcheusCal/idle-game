@@ -48,8 +48,8 @@ function buyProduction(type){
         producers.things.count -= producer.cost; // subtracts cost from money
         producer.count += 1; // gives you the producer
     };
-    document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
-    document.getElementById("farmercost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
+    document.getElementById(String(type)+"display").innerHTML = producer.count; // updates amount
+    document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.count; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
