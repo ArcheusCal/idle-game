@@ -37,7 +37,7 @@ function buyProduction(type){
     document.getElementById("farmerdisplay").innerHTML = producer.count; // updates amount
     document.getElementById("farmercost").innerHTML = Math.floor(25 * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
-    document.getElementById(String(producer)+"prodpersecond").innerHTML = producer.count*producer.power*tickspersecond; //updates production per second
+    document.getElementById(String(type)+"prodpersecond").innerHTML = producer.count*producer.power*tickspersecond; //updates production per second
 };
 
 
