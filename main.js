@@ -5,6 +5,8 @@ let tickspersecond = 1;
 let producers = {
     things: {
         generatedcount: 0,
+        // leave count here or else clickThing breaks and outputs NaN onto display when adding to money
+        count: 0
     },
     farmer: {
         // int solid
@@ -31,7 +33,6 @@ for (let type in producers) { // cycles through every part in producers, type wi
     document.getElementById(String(type)+"display").innerHTML = producers[type].count; // updates all cost displays to show baseCost
     document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].count*producers[type].power*tickspersecond;
 };
-
 
 function clickThing(number,type){
     producers[type].generatedcount += number; // adds number to count
