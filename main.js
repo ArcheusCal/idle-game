@@ -1,5 +1,9 @@
 let internalcount = 0;
 
+let thingfarmers = 0;
+
+let thingfarmerscost = 25;
+
 function clickThing(number){
     // adds number to internalcount
     internalcount += number;
