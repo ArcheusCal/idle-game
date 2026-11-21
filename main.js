@@ -1,4 +1,4 @@
-var internalcount = 0;
+let internalcount = 0;
 
 function clickThing(number){
     // adds number to internalcount
