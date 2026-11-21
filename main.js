@@ -58,10 +58,12 @@ function buyProduction(type){
         }
     else {
         console.log(
-            "could not buy %c"+String(type)+" %cproduction, error not enough money",
-            "colour:#E8E8E8; font-weight: bold;",
+            "%ccould not buy %c"+String(type)+" %cproduction, %cerror %cnot enough money",
+            "colour:#E8E8E8; font-weight: normal;",
             "color:#C72A2A; font-weight: bold;", 
-            "color:#E8E8E8; font-weight: normal;"); // reports that production could not be bought
+            "color:#E8E8E8; font-weight: normal;",
+            "color:#C72A2A; font-weight: bold;",
+            "color:#E8E8E8; font-weight: normal;");// reports that production could not be bought
         };
     document.getElementById(String(type)+"display").innerHTML = producer.count+producer.generatedcount; // updates amount
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
