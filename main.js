@@ -34,7 +34,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
 
 function clickThing(number,type){
     producers[type].count += number; // adds number to count
-    document.getElementById("thingsdisplay").innerHTML = String(internalcount); // sets thingdisplay value to internalcount
+    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count); // sets thingdisplay value to internalcount
 };
 
 function buyProduction(type){
