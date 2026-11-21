@@ -5,6 +5,7 @@ let producers = {
     farmers: {
         count: 0,
         baseCost: 25,
+        cost: 0,
         production: 1
     },
 };
@@ -16,14 +17,13 @@ function clickThing(number){
 
 function buyProduction(type){
     if (type === 1){
-        thingfarmerscost = Math.floor(25 * Math.pow(costexponent,thingfarmerscount));  // the cost is the costexponent to the power of amount of farmers
-        if (internalcount >= thingfarmerscost){ // checks if you have enough
-            thingfarmerscount += 1; // adds the amount of thingfarmers
-            internalcount -= thingfarmerscost; // subtracts cost
-            document.getElementById("thingfarmersdisplay").innerHTML = thingfarmerscount; // updates amount
-            document.getElementById("thingfarmerscost").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount)); // updates cost
+        producers.farmers.cost = Math.floor(producers.farmers.baseCost * Math.pow(costexponent,producers.farmers.count));  // the cost is the costexponent to the power of amount of farmers
+        if (internalcount >= producers.farmers.cost){ // checks if you have enough
+            producers.farmers.count += 1; // adds the amount of thingfarmers
+            internalcount -= producers.farmers.cost; // subtracts cost
+            document.getElementById("thingfarmersdisplay").innerHTML = producers.farmers.count; // updates amount
+            document.getElementById("thingfarmerscost").innerHTML = Math.floor(25 * Math.pow(costexponent,producers.farmers.count)); // updates cost
             document.getElementById("thingsdisplay").innerHTML = internalcount; // updates amount
         }
     };
-    document.getElementById("thingfarmersdisplay").innerHTML = String(thingfarmerscount);
 };
