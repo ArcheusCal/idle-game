@@ -34,12 +34,6 @@ for (let type in producers) { // cycles through every part in producers, type wi
     document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].count*producers[type].power*tickspersecond;
 };
 
-function clickThing(number,type){
-    producers[type].generatedcount += number; // adds number to count
-    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count+producers[type].generatedcount); // sets thingdisplay value to count
-    console.log("%cadded "+String(number)+" of "+String(type),"color:#ADADAD;"); // reports action in console
-};
-
 function updateProduction(type){
     producers[type].prodpersecond = (producers[type].count+producers[type].generatedcount)*producers[type].power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].prodpersecond; //updates production per second
@@ -47,6 +41,14 @@ function updateProduction(type){
 
 function updateAmountOfProduction(type){
     document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
+};
+
+function clickThing(number,type){
+    producers[type].generatedcount += number; // adds number to count
+    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count+producers[type].generatedcount); // sets thingdisplay value to count
+    console.log("%cadded "+String(number)+" of "+String(type),"color:#ADADAD;"); // reports action in console
+    updateProduction(type)
+    updateAmountOfProduction(type)
 };
 
 function buyProduction(type){
@@ -76,16 +78,16 @@ function buyProduction(type){
         };
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
+    updateProduction(type)
     updateAmountOfProduction(type);
-    updateProduction(type);
 };
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
+        updateProduction(type)
         updateAmountOfProduction(type);
-        updateProduction(type);
     };
 }, 1000/tickspersecond);
 
