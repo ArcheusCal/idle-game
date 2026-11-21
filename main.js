@@ -24,7 +24,7 @@ function buyProduction(type){
     if (!producer){
         return; // if the producer does not exist, stop
     }
-    let producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
+    producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
     if (internalcount >= producer.cost){ // checks if you have enough
         internalcount -= producer.cost; // subtracts cost from money
         producer.count += 1; // gives you the producer
