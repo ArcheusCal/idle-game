@@ -4,7 +4,7 @@ let tickspersecond = 1;
 
 let producers = {
     things: {
-        count: 0,
+        generatedcount: 0,
     },
     farmer: {
         // int solid
@@ -24,6 +24,7 @@ for (let type in producers) { // cycles through every part in producers, type wi
     if (type === "things") continue; // skips current loop if current producer is things, because things is money count
     producers[type].count = 0; // creates count, cost, prodpersecond attributes on selected producer & sets them to zero
     producers[type].cost = 0;
+    producers[type].generatedcount = 0;
     producers[type].prodpersecond = 0;
     producers[type].cost = producers[type].baseCost; // sets initial cost to base cost
     document.getElementById(String(type)+"cost").innerHTML = producers[type].baseCost; // updates all cost displays to show baseCost
@@ -33,8 +34,8 @@ for (let type in producers) { // cycles through every part in producers, type wi
 
 
 function clickThing(number,type){
-    producers[type].count += number; // adds number to count
-    document.getElementById(String(type)+"display").innerHTML = String(producers[type].count); // sets thingdisplay value to count
+    producers[type].generatedcount += number; // adds number to count
+    document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // sets thingdisplay value to count
     console.log("%cadded "+String(number)+" of "+String(type),"color:#ADADAD;"); // reports action in console
 };
 
@@ -45,13 +46,13 @@ function buyProduction(type){
         return; // if the producer does not exist, stop
     };
     producer.cost = Math.floor(producer.baseCost*Math.pow(costexponent,producer.count)); // calculates producer cost, costexponent to the producer count power
-    if (producers.things.count >= producer.cost){ // checks if you have enough
-        producers.things.count -= producer.cost; // subtracts cost from money
+    if (producers.things.generatedcount >= producer.cost){ // checks if you have enough
+        producers.things.generatedcount -= producer.cost; // subtracts cost from money
         producer.count += 1; // gives you the producer
     };
-    document.getElementById(String(type)+"display").innerHTML = producer.count; // updates amount
+    document.getElementById(String(type)+"display").innerHTML = producer.count+producer.generatedcount; // updates amount
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
-    document.getElementById("thingsdisplay").innerHTML = producers.things.count; // updates money
+    document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
     producer.prodpersecond = producer.count*producer.power*tickspersecond;
     document.getElementById(String(type)+"prodpersecond").innerHTML = producer.prodpersecond; //updates production per second
     console.log(
@@ -61,7 +62,8 @@ function buyProduction(type){
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
         if (type === "things") continue; // things is currency, it doesn't produce anything
-        clickThing(producers[type].count*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
+        clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
+        document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
     };
 }, 1000/tickspersecond);
 
