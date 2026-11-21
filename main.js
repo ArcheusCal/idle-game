@@ -19,8 +19,8 @@ function buyProduction(type){
             thingfarmerscount += 1; // adds the amount of thingfarmers
             internalcount -= thingfarmerscount; // subtracts cost
             document.getElementById("thingfarmersdisplay").innerHTML = thingfarmerscount; // updates amount
-            document.getElementById("thingfarmerscost").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount); // updates cost
-            document.getElementById("thingsdisplay").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount); // updates cost
+            document.getElementById("thingfarmerscost").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount)); // updates cost
+            document.getElementById("thingsdisplay").innerHTML = Math.floor(25 * Math.pow(costexponent,thingfarmerscount)); // updates cost
         }
     };
     document.getElementById("thingfarmersdisplay").innerHTML = String(thingfarmerscount);
