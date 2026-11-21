@@ -36,7 +36,7 @@ function buyProduction(type){
     document.getElementById("thingsdisplay").innerHTML = internalcount; // updates money
 };
 
-console.log("before run")
+
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     console.log("tick ran")
     for (let type in producers) { // cycles through all producers
@@ -46,10 +46,4 @@ window.setInterval(function(){ // fires the following code every 1000/ticksperse
         console.log(producers[type].power);
     };
 }, 1000/tickspersecond);
-console.log("after run")
 
-console.log("before run 2")
-window.setInterval(function(){
-    console.log("tick 2 ran")
-}, 1000/tickspersecond);
-console.log("after run 2")
