@@ -77,6 +77,8 @@ window.setInterval(function(){ // fires the following code every 1000/ticksperse
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
         document.getElementById(String(type)+"display").innerHTML = producers[type].count+producers[type].generatedcount; // updates amount
+        producers[type].prodpersecond = producers[type].count*producers[type].power*tickspersecond;
+        document.getElementById(String(type)+"prodpersecond").innerHTML = producers[type].prodpersecond; // updates gain per second of every producer
     };
 }, 1000/tickspersecond);
 
