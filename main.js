@@ -59,8 +59,8 @@ function buyProduction(type){
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
+        if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing(producers[type].count*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
-        
     };
 }, 1000/tickspersecond);
 
