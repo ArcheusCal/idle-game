@@ -4,14 +4,25 @@ let internalcount = 0;
 let costexponent = 1.1;
 let tickspersecond = 1;
 let producers = {
+    things: {
+        count: 0,
+    },
     farmer: {
         // int solid
         baseCost: 25,
         power: 1,
+        produces: "things",
+    },
+    farmerfactory: {
+        // int solid
+        baseCost: 500,
+        power: 1,
+        produces: "farmer"
     },
 };
 
 for (let type in producers) { // cycles through every part in producers, type will be that producer's name, like for i in statement
+    if (type === "things") continue; // skips current loop if current producer is things, because things is money count
     producers[type].count = 0; // creates count, cost, prodpersecond attributes on selected producer & sets them to zero
     producers[type].cost = 0;
     producers[type].prodpersecond = 0;
@@ -21,8 +32,8 @@ for (let type in producers) { // cycles through every part in producers, type wi
 };
 
 
-function clickThing(number){
-    internalcount += number; // adds number to internalcount
+function clickThing(number,type){
+    producers[type].count += number; // adds number to count
     document.getElementById("thingsdisplay").innerHTML = String(internalcount); // sets thingdisplay value to internalcount
 };
 
@@ -48,7 +59,8 @@ function buyProduction(type){
 
 window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
     for (let type in producers) { // cycles through all producers
-        clickThing(producers[type].count*producers[type].power); // adds producer amount * producer power to money
+        clickThing(producers[type].count*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
+        
     };
 }, 1000/tickspersecond);
 
