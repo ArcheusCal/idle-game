@@ -1,6 +1,7 @@
 // initializing stats
 let costexponent = 1.1;
 let tickspersecond = 1;
+let intid; // a variable where the interval's id will be stored
 
 let producers = {
     things: {
@@ -84,10 +85,15 @@ function buyProduction(type){
     updateAmountOfProduction(type);
 };
 
-window.setInterval(function(){ // fires the following code every 1000/tickspersecond milliseconds
-    for (let type in producers) { // cycles through all producers
+function resetInterval() {
+    clearInterval(intid); // clears previous interval
+
+    intid = setInterval(function() { // sets interval variable to the id of the new interval so that clearInterval will work next time, and starts a new interval
+        for (let type in producers) { // cycles through all producers
         if (type === "things") continue; // things is currency, it doesn't produce anything
         clickThing((producers[type].count+producers[type].generatedcount)*producers[type].power,producers[type].produces); // adds producer amount * producer power to money
-    };
-}, 1000/tickspersecond);
+        };
+    }, 1000 / tickspersecond); // activates the interval every 1000/tickspersecond milliseconds
+};
 
+resetInterval()
