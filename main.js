@@ -99,10 +99,13 @@ function resetInterval() {
 resetInterval();
 
 function changeTickRate(change) { // this is just a placeholder untill I implement a better system
-    tickspersecond += change;
-    document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
-    document.getElementById("tickspersecondcost").innerHTML = 5*(10**(Math.log2(tickspersecond)+1)); // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
-    resetInterval();
+    if (producers.things.generatedcount >= producer.cost){
+        producers.things.generatedcount -= producer.cost;
+        tickspersecond += change;
+        document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
+        document.getElementById("tickspersecondcost").innerHTML = 5*(10**(Math.log2(tickspersecond)+1)); // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
+        resetInterval();
+    };
 };
 
 changeTickRate(0);
