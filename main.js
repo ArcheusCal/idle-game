@@ -97,3 +97,8 @@ function resetInterval() {
 };
 
 resetInterval()
+
+function changeTickRate() { // this is just a placeholder untill I implement a better system
+    tickspersecond += 1;
+    resetInterval()
+};
