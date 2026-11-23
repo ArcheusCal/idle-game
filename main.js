@@ -105,10 +105,10 @@ function changeTickRate(change) { // this is just a placeholder untill I impleme
     if (producers.things.generatedcount >= tickratecost){
         producers.things.generatedcount -= tickratecost;
         tickspersecond += change;
-        document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
-        document.getElementById("tickspersecondcost").innerHTML = tickratecost; // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
         resetInterval();
     };
+    document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
+    document.getElementById("tickspersecondcost").innerHTML = tickratecost; // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
 };
 
 changeTickRate(0);
