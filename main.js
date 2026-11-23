@@ -81,7 +81,7 @@ function buyProduction(type){
         };
     document.getElementById(String(type)+"cost").innerHTML = Math.floor(producer.baseCost * Math.pow(costexponent,producer.count)); // updates cost
     document.getElementById("thingsdisplay").innerHTML = producers.things.generatedcount; // updates money
-    updateProduction(type)
+    updateProduction(type);
     updateAmountOfProduction(type);
 };
 
@@ -96,9 +96,11 @@ function resetInterval() {
     }, 1000 / tickspersecond); // activates the interval every 1000/tickspersecond milliseconds
 };
 
-resetInterval()
+resetInterval();
 
-function changeTickRate() { // this is just a placeholder untill I implement a better system
-    tickspersecond += 1;
-    resetInterval()
+function changeTickRate(change) { // this is just a placeholder untill I implement a better system
+    tickspersecond += change;
+    document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
+    document.getElementById("tickspersecondcost").innerHTML = 5*(10**(Math.log2(tickspersecond)+1)); // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
+    resetInterval();
 };
