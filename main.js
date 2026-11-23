@@ -2,6 +2,8 @@
 let costexponent = 1.1;
 let tickspersecond = 1;
 let intid; // a variable where the interval's id will be stored
+// this var won't stay for long
+let tickratecost = 0;
 
 let producers = {
     things: {
@@ -99,11 +101,12 @@ function resetInterval() {
 resetInterval();
 
 function changeTickRate(change) { // this is just a placeholder untill I implement a better system
-    if (producers.things.generatedcount >= producer.cost){
-        producers.things.generatedcount -= producer.cost;
+    tickratecost = 5*(10**(Math.log2(tickspersecond)+1));
+    if (producers.things.generatedcount >= tickratecost){
+        producers.things.generatedcount -= tickratecost;
         tickspersecond += change;
         document.getElementById("ticksperseconddisplay").innerHTML = tickspersecond;
-        document.getElementById("tickspersecondcost").innerHTML = 5*(10**(Math.log2(tickspersecond)+1)); // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
+        document.getElementById("tickspersecondcost").innerHTML = tickratecost; // calculates cost of next upgrade, which is 10^ amount of times purchased * 5
         resetInterval();
     };
 };
